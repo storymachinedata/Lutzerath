@@ -127,7 +127,7 @@ st.header('')
 
 tab1, tab2 = st.tabs(["Lutzerath", "Search for a Keyowrd Inside Posts"])
 
-
+df = df.sort_values(by='postDate', ascending=False)
 df_orig = df
 df_orig['Hour'] = pd.to_datetime(df_orig.postDate).dt.strftime("%H")
 
