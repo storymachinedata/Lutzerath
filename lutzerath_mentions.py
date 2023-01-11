@@ -24,20 +24,14 @@ with col1:
    #st.header("A cat")
    st.image("https://storymachine.mocoapp.com/objects/accounts/a201d12e-6005-447a-b7d4-a647e88e2a4a/logo/b562c681943219ea.png", width=200)
    
-with col2:
-   
-   st.header("Data Team Dashboard")
 
-st.sidebar.success("Choose Category")
 
-st.title('#TeamRWE Keyword Monitoring')
+st.title('Lutzerath Posts Monitoring')
 
 st.image(
     "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/LinkedIn_logo_initials.png/640px-LinkedIn_logo_initials.png",
     width=100,
 )
-
-
 
 my_bar = st.progress(0)
 
@@ -49,22 +43,10 @@ for percent_complete in range(100):
 
 
 
-#st.balloons()
-
-#st.header('`streamlit_pandas_profiling`')
-
-#st.header('LinkedIn Keyword Search Monitor')
-
-
-
 df =pd.read_csv('https://phantombuster.s3.amazonaws.com/UhrenaxfEnY/5EdaCLr0ieNAju7fa00niA/lutzerath_mentions.csv')
 
 df.insert(len(df.columns), 'Keyword', 'Lutzerath')
-#df2.insert(len(df2.columns), 'Keyword', 'Wind Energy')
 
-# frames = [df1, df2]
-
-# df = pd.concat(frames)
 
 df = df.dropna(how='any', subset=['textContent'])
 
@@ -145,20 +127,14 @@ st.header('')
 
 tab1, tab2 = st.tabs(["Lutzerath", "Search for a Keyowrd Inside Posts"])
 
-df_all = df
-# df_renew = df.loc[df.Keyword == 'Renewable Energy']
-# df_renew = df_renew.reset_index(drop=True)
-# df_wind = df.loc[df.Keyword == 'Wind Energy']
-# df_wind = df_wind.reset_index(drop=True)
 
-
-df_all['Hour'] = pd.to_datetime(df_all.postDate).dt.strftime("%H")
-# df_renew['Hour'] = pd.to_datetime(df_renew.postDate).dt.strftime("%H")
-# df_wind['Hour'] = pd.to_datetime(df_wind.postDate).dt.strftime("%H")
+df_orig = df
+df_orig['Hour'] = pd.to_datetime(df_orig.postDate).dt.strftime("%H")
 
 
 with tab1:
-
+   filter_number = st.number_input('Insert a number to view post with Total Interaaction greater than this number', )
+   df_all = df_orig[df_orig['Total Interactions']>=filter_number]
    if st.button('Show Data'):
       st.write(df_all)
 
