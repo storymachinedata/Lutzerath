@@ -127,7 +127,7 @@ st.header('')
 
 tab1, tab2 = st.tabs(["Lutzerath", "Search for a Keyowrd Inside Posts"])
 
-df = df.sort_values(by='postDate', ascending=False)
+#df = df.sort_values(by='postDate', ascending=False)
 df_orig = df
 df_orig['Hour'] = pd.to_datetime(df_orig.postDate).dt.strftime("%H")
 
@@ -153,7 +153,7 @@ with tab1:
 
    st.header(f'Most Recent Posts')
    st.info('Most recent posts appear first', icon="ℹ️")
-   df_all.sort_values(['Total Interactions'], ascending=False, inplace=True)
+   df_all.sort_values(['postDate'], ascending=False, inplace=True)
    df_all = df_all.reset_index(drop=True)
    df_all_100 = df_all.head(10)
    num_posts = df_all_100.shape[0]
