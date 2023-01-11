@@ -135,6 +135,7 @@ df_orig['Hour'] = pd.to_datetime(df_orig.postDate).dt.strftime("%H")
 with tab1:
    filter_number = st.number_input('Insert a number to view post with Total Interaaction greater than this number', )
    df_all = df_orig[df_orig['Total Interactions']>=filter_number]
+   df_all = df_all.reset_index(drop=True)
    if st.button('Show Data'):
       st.write(df_all)
 
