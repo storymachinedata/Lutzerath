@@ -156,7 +156,7 @@ with tab1:
    st.info('Most recent posts appear first', icon="ℹ️")
    df_all.sort_values(['postDate'], ascending=False, inplace=True)
    df_all = df_all.reset_index(drop=True)
-   df_all_100 = df_all.head(10)
+   df_all_100 = df_all
    num_posts = df_all_100.shape[0]
 
    if  num_posts>0:
