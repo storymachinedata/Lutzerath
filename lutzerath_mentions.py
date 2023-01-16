@@ -125,7 +125,7 @@ st.header('')
 st.header('')
 ################
 
-tab1, tab2 = st.tabs(["Lutzerath", "Search for a Keyowrd Inside Posts"])
+tab1, tab2 = st.tabs(["Lutzerath", "Search for a Keyword Inside Posts"])
 
 #df = df.sort_values(by='postDate', ascending=False)
 df_orig = df
